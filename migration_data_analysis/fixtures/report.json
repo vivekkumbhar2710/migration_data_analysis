@@ -19,7 +19,7 @@
   "ref_doctype": "Purchase Order",
   "reference_report": null,
   "report_name": "Purchase Order Details",
-  "report_script": "select parent as PurchaseOrderID, item_code, item_name,  name as PurchaseOrderReceiptReference, supplier_quotation, supplier_quotation_item, stock_uom, \nmaterial_request, material_request_item, qty, rate, net_amount, net_rate, amount, base_amount, base_net_amount, base_net_rate, idx, cost_center, expense_account\nfrom `tabPurchase Order Item`",
+  "query": "select parent as PurchaseOrderID, item_code, item_name,  name as PurchaseOrderReceiptReference, supplier_quotation, supplier_quotation_item, stock_uom, \nmaterial_request, material_request_item, qty, rate, net_amount, net_rate, amount, base_amount, base_net_amount, base_net_rate, idx, cost_center, expense_account\nfrom `tabPurchase Order Item`",
   "report_type": "Query Report",
   "roles": [
    {
@@ -62,7 +62,7 @@
   "ref_doctype": "Purchase Receipt",
   "reference_report": null,
   "report_name": "Purchase Receipt Reference",
-  "report_script": "select parent as PurchaseOrderID, item_code, item_name,  name as PurchaseOrderReceiptReference, supplier_quotation, supplier_quotation_item, stock_uom, \nmaterial_request, material_request_item, qty, rate, net_amount, net_rate, amount, base_amount, base_net_amount, base_net_rate, idx, cost_center, expense_account\nfrom `tabPurchase Order Item`",
+  "query": "select parent as PurchaseOrderID, item_code, item_name,  name as PurchaseOrderReceiptReference, supplier_quotation, supplier_quotation_item, stock_uom, \nmaterial_request, material_request_item, qty, rate, net_amount, net_rate, amount, base_amount, base_net_amount, base_net_rate, idx, cost_center, expense_account\nfrom `tabPurchase Order Item`",
   "report_type": "Query Report",
   "roles": [
    {
@@ -105,7 +105,7 @@
   "ref_doctype": "Purchase Invoice",
   "reference_report": null,
   "report_name": "Purchase Invoice Reference",
-  "report_script": "select parent as PurchaseInvoiceID, item_code, item_name, name as PurchaseInvoiceItemReference, \npurchase_receipt,  pr_detail as PurchaseReceiptReference, purchase_order,  po_detail as PurchaseOrderReference,\nuom, qty, rate, net_rate, net_amount, amount, base_amount, base_net_amount, base_net_rate, idx, cost_center, expense_account, warehouse\nfrom `tabPurchase Invoice Item`",
+  "query": "select parent as PurchaseInvoiceID, item_code, item_name, name as PurchaseInvoiceItemReference, \npurchase_receipt,  pr_detail as PurchaseReceiptReference, purchase_order,  po_detail as PurchaseOrderReference,\nuom, qty, rate, net_rate, net_amount, amount, base_amount, base_net_amount, base_net_rate, idx, cost_center, expense_account, warehouse\nfrom `tabPurchase Invoice Item`",
   "report_type": "Query Report",
   "roles": [
    {
@@ -148,7 +148,7 @@
   "ref_doctype": "Purchase Invoice",
   "reference_report": null,
   "report_name": "Purchase Receipt Items Matching with Purchase Order Items",
-  "report_script": "select concat(purchase_order,'-',item_code) as KeyPOItemRefernce, parent as PurchaseReceiptID, item_code, name as PurchaseReceiptRef,\nitem_code, item_name, name as PurchaseReceiptReference, purchase_order,  purchase_order_item, material_request, material_request_item, \nuom, qty, rate, net_rate, net_amount, amount, base_amount, base_net_amount, base_net_rate, idx, cost_center, expense_account, warehouse\nfrom `tabPurchase Receipt Item` \nwhere concat(purchase_order,'-',item_code) in (select concat(parent,'-', item_code) PO_Item  from `tabPurchase Order Item`)\norder by purchase_order, parent",
+  "query": "select concat(purchase_order,'-',item_code) as KeyPOItemRefernce, parent as PurchaseReceiptID, item_code, name as PurchaseReceiptRef,\nitem_code, item_name, name as PurchaseReceiptReference, purchase_order,  purchase_order_item, material_request, material_request_item, \nuom, qty, rate, net_rate, net_amount, amount, base_amount, base_net_amount, base_net_rate, idx, cost_center, expense_account, warehouse\nfrom `tabPurchase Receipt Item` \nwhere concat(purchase_order,'-',item_code) in (select concat(parent,'-', item_code) PO_Item  from `tabPurchase Order Item`)\norder by purchase_order, parent",
   "report_type": "Query Report",
   "roles": [
    {
@@ -191,7 +191,7 @@
   "ref_doctype": "Purchase Receipt",
   "reference_report": null,
   "report_name": "Purchase Receipt Items not Matching with Purchase Order Items (Missmatch Items)",
-  "report_script": "select concat(purchase_order,'-',item_code) as KeyPOItemRefernce, parent as PurchaseReceiptID, item_code, name as PurchaseReceiptRef,\nitem_code, item_name, name as PurchaseReceiptReference, purchase_order,  purchase_order_item, material_request, material_request_item, \nuom, qty, rate, net_rate, net_amount, amount, base_amount, base_net_amount, base_net_rate, idx, cost_center, expense_account, warehouse\nfrom `tabPurchase Receipt Item` \nwhere concat(purchase_order,'-',item_code) not in (select concat(parent,'-', item_code) PO_Item  from `tabPurchase Order Item`)\norder by purchase_order, parent",
+  "query": "select concat(purchase_order,'-',item_code) as KeyPOItemRefernce, parent as PurchaseReceiptID, item_code, name as PurchaseReceiptRef,\nitem_code, item_name, name as PurchaseReceiptReference, purchase_order,  purchase_order_item, material_request, material_request_item, \nuom, qty, rate, net_rate, net_amount, amount, base_amount, base_net_amount, base_net_rate, idx, cost_center, expense_account, warehouse\nfrom `tabPurchase Receipt Item` \nwhere concat(purchase_order,'-',item_code) not in (select concat(parent,'-', item_code) PO_Item  from `tabPurchase Order Item`)\norder by purchase_order, parent",
   "report_type": "Query Report",
   "roles": [
    {
@@ -234,7 +234,7 @@
   "ref_doctype": "Purchase Invoice",
   "reference_report": null,
   "report_name": "Purchase Invoice Items Matching with Purchase Receipt Items",
-  "report_script": "select parent as PurchaseInvoiceID, item_code, item_name, name as PurchaseInvoiceItemReference, \npurchase_receipt,  pr_detail as PurchaseReceiptReference, purchase_order,  po_detail as PurchaseOrderReference,\nuom, qty, rate, net_rate, net_amount, amount, base_amount, base_net_amount, base_net_rate, idx, cost_center, expense_account, warehouse\nfrom `tabPurchase Invoice Item`\nwhere concat(purchase_receipt,'-',item_code) in (select concat(parent,'-', item_code) PR_Item  from `tabPurchase Receipt Item`)",
+  "query": "select parent as PurchaseInvoiceID, item_code, item_name, name as PurchaseInvoiceItemReference, \npurchase_receipt,  pr_detail as PurchaseReceiptReference, purchase_order,  po_detail as PurchaseOrderReference,\nuom, qty, rate, net_rate, net_amount, amount, base_amount, base_net_amount, base_net_rate, idx, cost_center, expense_account, warehouse\nfrom `tabPurchase Invoice Item`\nwhere concat(purchase_receipt,'-',item_code) in (select concat(parent,'-', item_code) PR_Item  from `tabPurchase Receipt Item`)",
   "report_type": "Query Report",
   "roles": [
    {
@@ -277,7 +277,7 @@
   "ref_doctype": "Purchase Invoice",
   "reference_report": null,
   "report_name": "Purchase Invoice Items not matching with Purchase Receipt Items (Missmatch Items)",
-  "report_script": "select parent as PurchaseInvoiceID, item_code, item_name, name as PurchaseInvoiceItemReference, \npurchase_receipt,  pr_detail as PurchaseReceiptReference, purchase_order,  po_detail as PurchaseOrderReference,\nuom, qty, rate, net_rate, net_amount, amount, base_amount, base_net_amount, base_net_rate, idx, cost_center, expense_account, warehouse\nfrom `tabPurchase Invoice Item`\nwhere concat(purchase_receipt,'-',item_code) not in (select concat(parent,'-', item_code) PR_Item  from `tabPurchase Receipt Item`)",
+  "query": "select parent as PurchaseInvoiceID, item_code, item_name, name as PurchaseInvoiceItemReference, \npurchase_receipt,  pr_detail as PurchaseReceiptReference, purchase_order,  po_detail as PurchaseOrderReference,\nuom, qty, rate, net_rate, net_amount, amount, base_amount, base_net_amount, base_net_rate, idx, cost_center, expense_account, warehouse\nfrom `tabPurchase Invoice Item`\nwhere concat(purchase_receipt,'-',item_code) not in (select concat(parent,'-', item_code) PR_Item  from `tabPurchase Receipt Item`)",
   "report_type": "Query Report",
   "roles": [
    {
