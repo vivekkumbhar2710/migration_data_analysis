@@ -1,0 +1,18 @@
+include MANIFEST.in
+include requirements.txt
+include *.json
+include *.md
+include *.py
+include *.txt
+recursive-include migration_data_analysis *.css
+recursive-include migration_data_analysis *.csv
+recursive-include migration_data_analysis *.html
+recursive-include migration_data_analysis *.ico
+recursive-include migration_data_analysis *.js
+recursive-include migration_data_analysis *.json
+recursive-include migration_data_analysis *.md
+recursive-include migration_data_analysis *.png
+recursive-include migration_data_analysis *.py
+recursive-include migration_data_analysis *.svg
+recursive-include migration_data_analysis *.txt
+recursive-exclude migration_data_analysis *.pyc

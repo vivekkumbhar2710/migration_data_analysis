@@ -1,0 +1,303 @@
+[
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2023-10-28 15:30:57.054231",
+  "module": "Migration Data Analysis",
+  "name": "Purchase Order Details",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Purchase Order",
+  "reference_report": null,
+  "report_name": "Purchase Order Details",
+  "report_script": "select parent as PurchaseOrderID, item_code, item_name,  name as PurchaseOrderReceiptReference, supplier_quotation, supplier_quotation_item, stock_uom, \nmaterial_request, material_request_item, qty, rate, net_amount, net_rate, amount, base_amount, base_net_amount, base_net_rate, idx, cost_center, expense_account\nfrom `tabPurchase Order Item`",
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Purchase Order Details",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "Purchase Order Details",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase Manager"
+   },
+   {
+    "parent": "Purchase Order Details",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase User"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2023-10-28 15:33:16.352090",
+  "module": "Migration Data Analysis",
+  "name": "Purchase Receipt Reference",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Purchase Receipt",
+  "reference_report": null,
+  "report_name": "Purchase Receipt Reference",
+  "report_script": "select parent as PurchaseOrderID, item_code, item_name,  name as PurchaseOrderReceiptReference, supplier_quotation, supplier_quotation_item, stock_uom, \nmaterial_request, material_request_item, qty, rate, net_amount, net_rate, amount, base_amount, base_net_amount, base_net_rate, idx, cost_center, expense_account\nfrom `tabPurchase Order Item`",
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Purchase Receipt Reference",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "Purchase Receipt Reference",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase Manager"
+   },
+   {
+    "parent": "Purchase Receipt Reference",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase User"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2023-10-28 15:33:47.822427",
+  "module": "Migration Data Analysis",
+  "name": "Purchase Invoice Reference",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Purchase Invoice",
+  "reference_report": null,
+  "report_name": "Purchase Invoice Reference",
+  "report_script": "select parent as PurchaseInvoiceID, item_code, item_name, name as PurchaseInvoiceItemReference, \npurchase_receipt,  pr_detail as PurchaseReceiptReference, purchase_order,  po_detail as PurchaseOrderReference,\nuom, qty, rate, net_rate, net_amount, amount, base_amount, base_net_amount, base_net_rate, idx, cost_center, expense_account, warehouse\nfrom `tabPurchase Invoice Item`",
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Purchase Invoice Reference",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "Purchase Invoice Reference",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase Manager"
+   },
+   {
+    "parent": "Purchase Invoice Reference",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase User"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2023-10-28 15:34:53.241206",
+  "module": "Migration Data Analysis",
+  "name": "Purchase Receipt Items Matching with Purchase Order Items",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Purchase Invoice",
+  "reference_report": null,
+  "report_name": "Purchase Receipt Items Matching with Purchase Order Items",
+  "report_script": "select concat(purchase_order,'-',item_code) as KeyPOItemRefernce, parent as PurchaseReceiptID, item_code, name as PurchaseReceiptRef,\nitem_code, item_name, name as PurchaseReceiptReference, purchase_order,  purchase_order_item, material_request, material_request_item, \nuom, qty, rate, net_rate, net_amount, amount, base_amount, base_net_amount, base_net_rate, idx, cost_center, expense_account, warehouse\nfrom `tabPurchase Receipt Item` \nwhere concat(purchase_order,'-',item_code) in (select concat(parent,'-', item_code) PO_Item  from `tabPurchase Order Item`)\norder by purchase_order, parent",
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Purchase Receipt Items Matching with Purchase Order Items",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "Purchase Receipt Items Matching with Purchase Order Items",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase Manager"
+   },
+   {
+    "parent": "Purchase Receipt Items Matching with Purchase Order Items",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase User"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2023-10-28 15:36:50.922953",
+  "module": "Migration Data Analysis",
+  "name": "Purchase Receipt Items not Matching with Purchase Order Items (Missmatch Items)",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Purchase Receipt",
+  "reference_report": null,
+  "report_name": "Purchase Receipt Items not Matching with Purchase Order Items (Missmatch Items)",
+  "report_script": "select concat(purchase_order,'-',item_code) as KeyPOItemRefernce, parent as PurchaseReceiptID, item_code, name as PurchaseReceiptRef,\nitem_code, item_name, name as PurchaseReceiptReference, purchase_order,  purchase_order_item, material_request, material_request_item, \nuom, qty, rate, net_rate, net_amount, amount, base_amount, base_net_amount, base_net_rate, idx, cost_center, expense_account, warehouse\nfrom `tabPurchase Receipt Item` \nwhere concat(purchase_order,'-',item_code) not in (select concat(parent,'-', item_code) PO_Item  from `tabPurchase Order Item`)\norder by purchase_order, parent",
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Purchase Receipt Items not Matching with Purchase Order Items (Missmatch Items)",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "Purchase Receipt Items not Matching with Purchase Order Items (Missmatch Items)",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase Manager"
+   },
+   {
+    "parent": "Purchase Receipt Items not Matching with Purchase Order Items (Missmatch Items)",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase User"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2023-10-28 15:35:59.803062",
+  "module": "Migration Data Analysis",
+  "name": "Purchase Invoice Items Matching with Purchase Receipt Items",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Purchase Invoice",
+  "reference_report": null,
+  "report_name": "Purchase Invoice Items Matching with Purchase Receipt Items",
+  "report_script": "select parent as PurchaseInvoiceID, item_code, item_name, name as PurchaseInvoiceItemReference, \npurchase_receipt,  pr_detail as PurchaseReceiptReference, purchase_order,  po_detail as PurchaseOrderReference,\nuom, qty, rate, net_rate, net_amount, amount, base_amount, base_net_amount, base_net_rate, idx, cost_center, expense_account, warehouse\nfrom `tabPurchase Invoice Item`\nwhere concat(purchase_receipt,'-',item_code) in (select concat(parent,'-', item_code) PR_Item  from `tabPurchase Receipt Item`)",
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Purchase Invoice Items Matching with Purchase Receipt Items",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "Purchase Invoice Items Matching with Purchase Receipt Items",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase Manager"
+   },
+   {
+    "parent": "Purchase Invoice Items Matching with Purchase Receipt Items",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase User"
+   }
+  ]
+ },
+ {
+  "add_total_row": 0,
+  "columns": [],
+  "disable_prepared_report": 0,
+  "disabled": 0,
+  "docstatus": 0,
+  "doctype": "Report",
+  "filters": [],
+  "is_standard": "No",
+  "javascript": null,
+  "json": null,
+  "letter_head": null,
+  "modified": "2023-10-28 15:36:28.576573",
+  "module": "Migration Data Analysis",
+  "name": "Purchase Invoice Items not matching with Purchase Receipt Items (Missmatch Items)",
+  "prepared_report": 0,
+  "query": null,
+  "ref_doctype": "Purchase Invoice",
+  "reference_report": null,
+  "report_name": "Purchase Invoice Items not matching with Purchase Receipt Items (Missmatch Items)",
+  "report_script": "select parent as PurchaseInvoiceID, item_code, item_name, name as PurchaseInvoiceItemReference, \npurchase_receipt,  pr_detail as PurchaseReceiptReference, purchase_order,  po_detail as PurchaseOrderReference,\nuom, qty, rate, net_rate, net_amount, amount, base_amount, base_net_amount, base_net_rate, idx, cost_center, expense_account, warehouse\nfrom `tabPurchase Invoice Item`\nwhere concat(purchase_receipt,'-',item_code) not in (select concat(parent,'-', item_code) PR_Item  from `tabPurchase Receipt Item`)",
+  "report_type": "Script Report",
+  "roles": [
+   {
+    "parent": "Purchase Invoice Items not matching with Purchase Receipt Items (Missmatch Items)",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Stock User"
+   },
+   {
+    "parent": "Purchase Invoice Items not matching with Purchase Receipt Items (Missmatch Items)",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase Manager"
+   },
+   {
+    "parent": "Purchase Invoice Items not matching with Purchase Receipt Items (Missmatch Items)",
+    "parentfield": "roles",
+    "parenttype": "Report",
+    "role": "Purchase User"
+   }
+  ]
+ }
+]
